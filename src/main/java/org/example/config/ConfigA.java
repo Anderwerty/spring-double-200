@@ -7,8 +7,12 @@ import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 
 @Configuration
+//@Import(ConfigB.class)
+//@ImportResource
 public class ConfigA {
 
     @Bean("userService")
@@ -16,7 +20,7 @@ public class ConfigA {
             @Qualifier("hibernateUserRepository")
             UserRepository userRepository) {
         //return UserService.builder().with...(). build();
-        return new UserService(userRepository);
+        return new UserService(userRepository, null);
     }
 
 
