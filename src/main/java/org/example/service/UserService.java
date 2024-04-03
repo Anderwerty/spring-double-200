@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.LogTimeExecution;
 import org.example.entity.User;
 import org.example.repository.UserRepository;
 import org.example.service.validator.UserValidator;
@@ -25,8 +26,16 @@ public class UserService implements InitializingBean, DisposableBean {
         this.userValidator = userValidator;
     }
 
+    @LogTimeExecution
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+
+    @LogTimeExecution
+    public void methodToThrowException(){
+        RuntimeException cause = new RuntimeException("cause");
+        throw new RuntimeException(cause);
     }
 
     @Override

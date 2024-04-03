@@ -3,6 +3,7 @@ package org.example;
 import org.example.config.ConfigB;
 import org.example.repository.InMemoryUserRepository;
 import org.example.repository.UserRepository;
+import org.example.service.PropertyService;
 import org.example.service.UserService;
 import org.example.service.validator.UserValidator;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -20,6 +21,12 @@ public class Main3 {
 //            UserRepository userRepository =
 //                    context.getBean(UserRepository.class);
 //            userRepository.findAll().forEach(System.out::println);
+
+
+            PropertyService propertyService = context.getBean(PropertyService.class);
+            propertyService.method();
+
+            userService.methodToThrowException();
         }
     }
 }
